@@ -11,7 +11,7 @@ public class MQConsumerController {
     /*
 	 * queue模式监听和读取消息
 	 */
-    @JmsListener(destination="sample.queue")
+    @JmsListener(destination="telQueue")
     public void readActiveQueue(String message) {
         System.out.println("接受到：" + message);
         //TODO something
@@ -20,7 +20,7 @@ public class MQConsumerController {
 
 
     /*
-        * topic模式监听和读取消息1
+        * topic一对多，所有下面有两个消费者 模式监听和读取消息1
         */
     @JmsListener(destination="sample.topic")
     public void readActiveTopic1(String message) {

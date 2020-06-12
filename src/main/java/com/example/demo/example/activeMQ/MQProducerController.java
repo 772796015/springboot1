@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import javax.jms.Queue;
 import javax.jms.Topic;
 
@@ -18,8 +19,8 @@ public class MQProducerController {
     @Autowired
     private JmsMessagingTemplate jmsMessagingTemplate;
 
-    @Autowired
-    private Queue queue;
+    @Resource(name="telQueue")
+    private Queue telQueue;
 
     @Autowired
     private Topic topic;
@@ -31,7 +32,7 @@ public class MQProducerController {
     public void sendmsg(@RequestParam(name = "msg") String msg) {
         // 指定消息发送的目的地及内容
         System.out.println("queue发送消息-----" + msg);
-        this.jmsMessagingTemplate.convertAndSend(this.queue, msg);
+        this.jmsMessagingTemplate.convertAndSend(telQueue, msg);
     }
 
     /**
@@ -41,7 +42,7 @@ public class MQProducerController {
     public void send(@RequestParam(name = "msg") String msg) {
         // 指定消息发送的目的地及内容
         System.out.println("topic发送消息----" + msg);
-        this.jmsMessagingTemplate.convertAndSend(this.topic, msg);
+        this.jmsMessagingTemplate.convertAndSend(topic, msg);
     }
 
 }
