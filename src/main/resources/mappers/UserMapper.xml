@@ -12,10 +12,19 @@
 
     </resultMap>
 
+    <!-- 查询-->
     <select id="findUser" parameterType="INTEGER" resultMap="UserMap">
         select *
         from t_user
         where 1=1
         and id = #{id,jdbcType=INTEGER}
     </select>
+
+    <!-- 修改 -->
+    <update id="updateUser" >
+        update t_user
+        set age = age - #{age}
+        where id= #{id,jdbcType=INTEGER}
+    </update>
+
 </mapper>

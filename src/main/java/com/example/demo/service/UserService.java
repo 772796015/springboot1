@@ -7,4 +7,5 @@ import com.example.demo.vo.User;
  */
 public interface UserService {
     User findUser(int id);
+    void updateUser(int id1, int id2,int age);
 }
