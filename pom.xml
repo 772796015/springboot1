@@ -108,6 +108,25 @@
 		</dependency>
         <!--整合thymeleaf end-->
 
+
+		<!--整合http请求 start -->
+		<!--整合Hutool工具类 -->
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+        <!--json处理工具-->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.51</version>
+		</dependency>
+		<!--整合http请求  end-->
+
+
+
+
 	</dependencies>
 
 	<!--maven 工具栏显示可勾选环境dev，dat，uat   start-->

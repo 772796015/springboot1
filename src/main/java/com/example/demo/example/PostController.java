@@ -23,7 +23,7 @@ public String test1(@RequestParam(name = "username") String username,
                     @RequestParam(name = "password") String password) {
     logger.info(username+""+password);
     System.out.println(username+""+password);
-    return "成功";
+    return "success";
 }
 
     // post请求示例  类似于表单提交 postman上访问 url：localhost:8080/testVO，
@@ -33,7 +33,7 @@ public String test1(@RequestParam(name = "username") String username,
     public String testVO(User user) {
         logger.info(user.getName()+"---"+user.getPhone());
         System.out.println(user.getName()+"---"+user.getPhone());
-        return "成功";
+        return "success";
     }
 
     //  post请求示例  举例：ajaxjson串请求 postman上访问 url：localhost:8080/testJson，
@@ -43,7 +43,7 @@ public String test1(@RequestParam(name = "username") String username,
     public String testJson(@RequestBody User user) {
         logger.info(user.getName()+"---"+user.getPhone());
         System.out.println(user.getName()+"---"+user.getPhone());
-        return "成功";
+        return "success";
     }
 
 }
