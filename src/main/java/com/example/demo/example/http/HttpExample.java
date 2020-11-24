@@ -21,14 +21,14 @@ public class HttpExample {
             map.put("phone", "888");
 
             String body = JSONObject.toJSONString(map);//请求参数
-            String url="http://localhost:5656/testJson";//请求地址
+            String url="http://localhost:8088/testJson";//请求地址
             String result = HttpUtil.post(url, body);
             System.out.println(result);
         }
 
         //get请求
         public void getExample(){
-            String url="http://localhost:5656/getController/123?name=zhang";//请求地址
+            String url="http://localhost:8088/getController/123?name=zhang";//请求地址
             String result = HttpUtil.get(url);
             System.out.println(result);
         }

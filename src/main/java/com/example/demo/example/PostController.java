@@ -3,10 +3,7 @@ package com.example.demo.example;
 import com.example.demo.vo.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 演示postman post请求示例 详见聚合项目2.3章节
@@ -16,15 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PostController {
     private Logger logger = LoggerFactory.getLogger(PostController.class);
-
-// post请求示例  postman上访问 url：localhost:8080/test1，params栏填 key：username，value：111.key：password，value：222    输入以上信息后访问即可
-@PostMapping(value = "/test1")
-public String test1(@RequestParam(name = "username") String username,
-                    @RequestParam(name = "password") String password) {
-    logger.info(username+""+password);
-    System.out.println(username+""+password);
-    return "success";
-}
 
     // post请求示例  类似于表单提交 postman上访问 url：localhost:8080/testVO，
     // params栏填 key：id，value：1.key：name，value：张三 .key：age，value：1.key：address，value：1 . key：phone，value：18510808831

@@ -123,37 +123,7 @@
 			<version>1.2.51</version>
 		</dependency>
 		<!--整合http请求  end-->
-
-
-
-
 	</dependencies>
-
-	<!--maven 工具栏显示可勾选环境dev，dat，uat   start-->
-	<profiles>
-		<profile>
-			<id>dev</id>
-			<properties>
-				<profiles.active>dev</profiles.active>
-			</properties>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-		</profile>
-		<profile>
-			<id>dat</id>
-			<properties>
-				<profiles.active>dat</profiles.active>
-			</properties>
-		</profile>
-		<profile>
-			<id>uat</id>
-			<properties>
-				<profiles.active>uat</profiles.active>
-			</properties>
-		</profile>
-	</profiles>
-	<!--maven 工具栏显示可勾选环境dev，dat，uat   end-->
 
 
 	<build>
@@ -163,10 +133,6 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-
-		<!--此配置是为了打包时只打包application.properties主配置文件和相应环境的配置文件（不配置的话打包的就是所有环境的配置文件），以及打包后jar包的命名start-->
-		<!--打包后jar包命名-->
-		<finalName>springboot1-${profiles.active}</finalName>
 
 	</build>
 
