@@ -123,6 +123,22 @@
 			<version>1.2.51</version>
 		</dependency>
 		<!--整合http请求  end-->
+
+
+
+       <!--日期工具类引用的jar start -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+		</dependency>
+		<!--日期工具类引用的jar end-->
+
 	</dependencies>
 
 
