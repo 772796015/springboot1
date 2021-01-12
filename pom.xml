@@ -164,6 +164,16 @@
 		</dependency>
 		<!--通用webservice调用工具引入jar-->
 
+
+
+		<!-- springboot 整合cxf -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-spring-boot-starter-jaxws</artifactId>
+			<version>3.2.9</version>
+		</dependency>
+		<!-- springboot 整合cxf -->
+
 	</dependencies>
 
 
