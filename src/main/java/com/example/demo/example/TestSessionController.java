@@ -14,13 +14,13 @@ public class TestSessionController {
     @Value("${server.port}")
     private Integer projectPort;// 项目端口
 
-    @RequestMapping("/createSession")
+    @RequestMapping("/createSession")   //访问地址：http://localhost:8088/createSession?name=zhangsan
     public String createSession(HttpSession session, String name) {
         session.setAttribute("name", name);
         return "当前项目端口：" + projectPort + " 当前sessionId :" + session.getId() + "在Session中存入成功！";
     }
 
-    @RequestMapping("/getSession")
+    @RequestMapping("/getSession")   //访问地址：http://localhost:8088/getSession
     public String getSession(HttpSession session) {
         return "当前项目端口：" + projectPort + " 当前sessionId :" + session.getId() + "  获取的姓名:" + session.getAttribute("name");
     }
