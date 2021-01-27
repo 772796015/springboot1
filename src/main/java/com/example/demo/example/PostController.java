@@ -34,4 +34,12 @@ public class PostController {
         return "success";
     }
 
+    //  post请求示例  举例：ajaxjson串请求,直接接收就为json字符串 postman上访问 url：localhost:8080/testJsonStr，
+    //body页签选择raw模式，数据类型选择json（application/json），  传参：{	"id":"1",	"name":"张三",	"age":"10",	"address":"20",	"phone":"18510808831"}
+
+    @PostMapping(value = "/testJsonStr")
+    public String testJson(@RequestBody String str) {
+        System.out.println(str);
+        return "success";
+    }
 }
