@@ -6,6 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by DJ010199 on 2020/5/20.
  */
@@ -26,5 +31,18 @@ public class UsersetviceImpl implements UserService {
         userMapper.updateUser(id1, age); //修改用户1的年龄
           int i = 1/0;  //抛出异常，
         userMapper.updateUser(id2, age); //修改用户2的年龄
+    }
+
+    //复杂参数查询
+    public void ComplexParameters(){
+        Map<String,Object> map1=new HashMap<String,Object>();
+        List nameList =new ArrayList<>();
+        nameList.add("张三");
+        nameList.add("李思");
+        map1.put("nameList",nameList);
+        map1.put("age",5);
+       List<User> users=  userMapper.ComplexParameters(map1);
+
+
     }
 }

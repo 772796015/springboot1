@@ -32,5 +32,12 @@ public class MybatisController {
     public void findUser(){
         userService.updateUser (1,5,5);
     }
+    //复杂类型查询，整合成map后查
+    //http://localhost:8088/mybatis/complexParameters
+    @GetMapping(value = "/mybatis/complexParameters")
+    public void complexParameters(){
+        userService.ComplexParameters ();
+    }
+
 
 }
