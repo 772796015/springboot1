@@ -36,4 +36,12 @@
 
     </select>
 
+    <!-- 查询  其实直接resultMap="UserMap" 或者resultType="com.example.demo.vo.User"   在此处都可以接收（返回值不用和接收实体中的个数一致，只要包含即可），只是为了演示map如何接收返回值-->
+    <select id="findUser1"  resultType="java.util.Map">
+        select id,name
+        from t_user
+        where 1=1
+        and id = #{id,jdbcType=INTEGER}
+    </select>
+
 </mapper>

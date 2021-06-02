@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  *
  * Created by DJ010199 on 2020/5/21.
@@ -39,5 +42,11 @@ public class MybatisController {
         userService.ComplexParameters ();
     }
 
+    //返回值封装成map
+    //http://localhost:8088/findUser1/5
+    @GetMapping(value = "/findUser1/{id}")
+    public    List<Map<String,Object>>  findUser1(@PathVariable int id){
+        return userService.findUser1(id);
+    }
 
 }

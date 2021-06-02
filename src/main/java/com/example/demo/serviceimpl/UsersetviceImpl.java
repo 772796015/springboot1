@@ -45,4 +45,9 @@ public class UsersetviceImpl implements UserService {
 
 
     }
+
+    //返回值查询，封装成map
+    public List<Map<String,Object>> findUser1(int id){
+        return userMapper.findUser1(id);
+    }
 }

@@ -15,4 +15,6 @@ public interface  UserMapper {
         User findUser(int id);
         void updateUser(@Param("id")int id, @Param("age")int age);
         List<User> ComplexParameters(Map map1);
+        List<Map<String,Object>> findUser1(int id);
+
 }
