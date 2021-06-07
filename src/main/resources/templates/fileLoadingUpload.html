@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style type="text/css">
+        #progress:after {
+            content: '%';
+        }
+    </style>
+</head>
+<body>
+<h3>File upload demo 11</h3>
+<form method="post" enctype="multipart/form-data" id="dataForm">
+    <input type="file" name="file" id="fileInput"> <br>
+    <input type="submit" value="submit" id="submit">
+</form>
+<div id="progress"></div>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+    (function () {
+        var progress = document.getElementById("progress");
+
+        $("#submit").click(function(event) {
+            //阻止默认事件
+            event.preventDefault();
+            var formData = new FormData();
+            formData.append("file",  $("#fileInput")[0].files[0]);
+
+            //循环查看状态
+            var t = setInterval(function(){
+                $.ajax({
+                    url: 'http://localhost:8083/ProgressFile', //修改成进度服务借口
+                    type: 'POST',
+                    processData : false,
+                    contentType : false,
+                    data: formData,
+                    success: function (data) {
+                        //前台更新进度
+                        progress.innerText = parseInt((data.progress / data.size) * 100);
+                    },
+                    error: function(){
+                        console.log("error");
+                    }
+                });
+            }, 500);
+            //上传文件
+
+            $.ajax({
+                url: 'http://localhost:8083/uploadFile', //修改成上传服务借口
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (responseText) {
+                    //上传完成，清除循环事件
+                    clearInterval(t);
+                    //将进度更新至100%
+                    progress.innerText = 100;
+                },
+                error: function(){
+                    console.log("error");
+                }
+            });
+            return false;
+        });
+
+    })();
+</script>
+</body>
+</html>
