@@ -166,11 +166,11 @@ public class FileUploadController {
 
     /**********************上传显示进度条演示*****************************************************************************************************************************************************************/
     /*
-     * fileUpload.html页面   访问地址http://localhost:8082/fileUpload
+     * fileLoadingUpload.html页面   访问地址http://localhost:8083/fileUpload1
      */
-    @RequestMapping("/fileUpload")
+    @RequestMapping("/fileUpload1")
     public String fileUpload(){
-        return "/fileUpload";
+        return "/fileLoadingUpload";
     }
 
     @RequestMapping("/uploadFile")
