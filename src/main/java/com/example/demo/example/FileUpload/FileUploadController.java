@@ -11,7 +11,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *文件上传和下载
@@ -20,7 +22,7 @@ import java.util.List;
  */
 @Controller
 public class FileUploadController {
-
+    private  static Map<String,Object> prossG=new HashMap<String,Object>();
     /*
      * 获取file.html页面   访问地址http://localhost:8082/file
      */
@@ -159,6 +161,71 @@ public class FileUploadController {
             }
         }
         return null;
+    }
+
+
+    /**********************上传显示进度条演示*****************************************************************************************************************************************************************/
+    /*
+     * fileLoadingUpload.html页面   访问地址http://localhost:8083/fileUpload1
+     */
+    @RequestMapping("/fileUpload1")
+    public String fileUpload(){
+        return "/fileLoadingUpload";
+    }
+
+    @RequestMapping("/uploadFile")
+    @ResponseBody
+    public String uploadFile(MultipartFile file) {
+
+        String orgName = file.getOriginalFilename();
+
+        try {
+            //写入文件长度和初始进度
+            prossG.put(orgName + "Size", file.getSize());
+            //文件进度长度
+            long progress = 0;
+            //用流的方式读取文件，以便可以实时的获取进度
+            InputStream in = file.getInputStream();
+            File targetFile = new File("D:/test/"+ orgName);
+            targetFile.createNewFile();
+            FileOutputStream out = new FileOutputStream(targetFile);
+            byte[] buffer = new byte[1024];
+            int readNumber = 0;
+            while ((readNumber = in.read(buffer)) != -1) {//此处进度条精华在此--------取上传的大小，然后除总大小
+                //每读取一次，更新一次进度大小
+                progress = progress + readNumber;
+                //写入进度
+                prossG.put(orgName + "Progress", progress);
+                System.out.println("上传过程中"+progress);
+                out.write(buffer);
+            }
+            //当文件上传完成之后，移除此次上传的状态信息
+            prossG.remove(orgName + "Size");
+            prossG.remove(orgName + "Progress");
+            in.close();
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "success";
+    }
+
+
+
+
+    @RequestMapping("/ProgressFile")
+    @ResponseBody
+    public Map<String,Object> ProgressFile(MultipartFile file) {
+        String orgName = file.getOriginalFilename();
+        Object size = prossG.get(orgName + "Size");
+        size = size == null ? 100 : size;
+        Object progress = prossG.get(orgName + "Progress");
+        System.out.println("刷新过程中"+progress);
+        progress = progress == null ? 0 : progress;
+        Map<String,Object> json = new HashMap<>();
+        json.put("size", size);
+        json.put("progress", progress);
+        return json;
     }
 }
 
