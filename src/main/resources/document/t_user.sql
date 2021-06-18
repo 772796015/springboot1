@@ -38,3 +38,27 @@ INSERT INTO `t_user` VALUES (NULL, '张三', 20, '长沙', '13100000000');
 INSERT INTO `t_user` VALUES (NULL, '张三', 20, '长沙', '13100000000');
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+
+
+-- 学生
+CREATE TABLE IF NOT EXISTS `student`(
+   `id` INT UNSIGNED AUTO_INCREMENT,
+   `name` VARCHAR(100) ,
+   `tid` INT ,
+   PRIMARY KEY ( `id` )
+)
+
+-- 教师表
+CREATE TABLE IF NOT EXISTS `teacher`(
+   `id` INT UNSIGNED AUTO_INCREMENT,
+   `name` VARCHAR(100) ,
+   PRIMARY KEY ( `id` )
+)
+
+INSERT INTO ``(`id`, `name`, `tid`) VALUES (1, '张三', 1);
+INSERT INTO ``(`id`, `name`, `tid`) VALUES (2, '李四', 1);
+INSERT INTO ``(`id`, `name`, `tid`) VALUES (3, '王五', 1);
+INSERT INTO ``(`id`, `name`, `tid`) VALUES (4, '宋六', 2);
+
+INSERT INTO ``(`id`, `name`) VALUES (1, '李勤');

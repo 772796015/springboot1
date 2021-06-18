@@ -1,6 +1,8 @@
 package com.example.demo.example;
 
+import com.example.demo.mapper.TeacherMapper;
 import com.example.demo.service.UserService;
+import com.example.demo.vo.Teacher2;
 import com.example.demo.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +22,8 @@ import java.util.Map;
 public class MybatisController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private TeacherMapper teacherMapper;
 
     //演示：springboot集成mybatis  浏览器访问地址  localhost:8080/mybatis/5
     @GetMapping(value = "/mybatis/{id}")
@@ -49,4 +53,25 @@ public class MybatisController {
         return userService.findUser1(id);
     }
 
+ /*   一对多处理一个老师对应多个学生，方案1（此处为了演示直接调用了mapper，其实不符合规范，此处未简写）
+    参考文档：https://www.cnblogs.com/20183544-wangzhengshuai/p/12490894.html
+    http://localhost:8083/getTeacher
+
+    此方案可能导致分页错误
+    */
+    @GetMapping(value = "/getTeacher")
+    public Teacher2 getTeacher(){
+        return teacherMapper.getTeacher(1);
+    }
+
+    /*一对多处理一个老师对应多个学生，方案1（此处为了演示直接调用了mapper，其实不符合规范，此处未简写）
+    参考文档：https://www.cnblogs.com/20183544-wangzhengshuai/p/12490894.html
+    http://localhost:8083/getTeacher2
+
+    此方案不会导致分页错误
+    */
+    @GetMapping(value = "/getTeacher2")
+    public Teacher2 getTeacher2(){
+        return teacherMapper.getTeacher2(1);
+    }
 }
