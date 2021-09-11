@@ -24,6 +24,8 @@ public class RedisController {
         User value1=(User)redisTemplate.opsForValue().get("user");
         System.out.println(value1);
 
+        //演示git提交分支合并
+
 
         //操作字符串
         redisTemplate.opsForValue().set("myKey","myValue");
