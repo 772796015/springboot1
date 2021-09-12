@@ -6,6 +6,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Set;
+
 /** 集成redis使用例子     get访问地址：localhost:8082/redis
  * Created by DJ010199 on 2020/6/11.
  */
@@ -26,6 +28,11 @@ public class RedisController {
 
         //演示git提交分支合并
 
+        //key*遍历key
+        Set<Object> keys1=redisTemplate.keys("myKey*");
+        for (Object key:keys1) {
+            System.out.println("遍历所有key------"+(String) redisTemplate.opsForValue().get(key.toString()));
+        }
 
         //操作字符串
         redisTemplate.opsForValue().set("myKey","myValue");
