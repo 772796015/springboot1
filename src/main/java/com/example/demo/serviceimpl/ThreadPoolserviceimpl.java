@@ -1,7 +1,5 @@
 package com.example.demo.serviceimpl;
 
-import com.example.demo.example.GetController;
-import com.example.demo.example.ThreadPoolExample;
 import com.example.demo.service.ThreadPoolservice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
